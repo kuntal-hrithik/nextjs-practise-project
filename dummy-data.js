@@ -40,13 +40,14 @@ const DUMMY_EVENTS = [
   }
   
   export function getFilteredEvents(dateFilter) {
+    console.log(dateFilter);
     const { year, month } = dateFilter;
   
     let filteredEvents = DUMMY_EVENTS.filter((event) => {
       const eventDate = new Date(event.date);
-      return eventDate.getFullYear() === year && eventDate.getMonth() === month - 1;
+      return eventDate.getFullYear() === year && eventDate.getMonth() === month-1;
     });
-  
+  console.log(filteredEvents);
     return filteredEvents;
   }
   
