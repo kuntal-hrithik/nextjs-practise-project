@@ -1,16 +1,26 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import { getFeaturedEvents } from '../../helpers/api-util'
 import { Inter } from 'next/font/google'
-import { getFeaturedEvents } from '../../dummy-data'
 import EventList from '../../components/events/event-list'
 
 
 const inter = Inter({ subsets: ['latin'] })
-const featuredEvents = getFeaturedEvents();
-export default function Home() {
+
+export default function Home(props) {
   return (
     <div>
-     <EventList items={featuredEvents}></EventList>
+     <EventList items={props.events}></EventList>
     </div>
   )
-}
+  }
+  export const getStaticProps = async() =>{
+
+    const featuredEvents = await getFeaturedEvents();
+
+    return{
+      props:{
+        events: featuredEvents
+      }
+    }
+  }
+
+
