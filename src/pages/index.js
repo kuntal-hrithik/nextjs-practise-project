@@ -19,7 +19,8 @@ export default function Home(props) {
     return{
       props:{
         events: featuredEvents
-      }
+      },
+      revalidate: 1800
     }
   }
 
